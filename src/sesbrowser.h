@@ -10,11 +10,19 @@ class BrowserAction
 	WebKitWebView* view;
 	
 	public:
+	static int num;
+
 	static GtkWidget* signal_create (WebKitWebView* web_view, WebKitNavigationAction *navigation_action, gpointer browser);
 	static void signal_ready_to_show (WebKitWebView* web_view, gpointer data);
 	static gboolean signal_enter_fullscreen (WebKitWebView *web_view, GtkWidget* window);
 	static gboolean signal_leave_fullscreen (WebKitWebView *web_view, GtkWidget* window);
+	static void signal_close (WebKitWebView* web_view, gpointer data);
+	static void win_signal_close (GtkWidget* win, gpointer data);
 	
+	
+static void num_dec ();
+	
+	static void close (GtkWidget* w);
 	void init (WebKitWebView* view, gpointer b, gpointer w);
 };
 
@@ -38,16 +46,14 @@ class MainWindow
 
 class SESBrowser
 {
-	private:
+	public:
 	MainWindow* 	window;
 	gboolean*		available;
-	int				windowcount;
 	
+	int whoIs (GtkWidget* win);
 	int getAvailable ();
 	
-	public:
 	GtkWidget* newWindow (char* uri, GtkWidget* old);
 	
 	SESBrowser (char* uri, GtkWidget* old);
 };
-
