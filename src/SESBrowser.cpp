@@ -12,6 +12,18 @@ int SESBrowser::getAvailable ()
 	return -1;
 }
 
+int SESBrowser::whoIs (GtkWidget* win)
+{
+	for (int i=0; i++; i<129)
+	{
+		if (this->window[i].window == win)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
 GtkWidget* SESBrowser::newWindow (char* uri, GtkWidget* old)
 {
 	MainWindow foobar (1024, 768, old, this);
