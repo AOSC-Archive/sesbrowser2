@@ -4,6 +4,12 @@
 #include <stdio.h>
 #include <string.h>
 
+class SESdotJS
+{
+	public:
+	SESdotJS (JSGlobalContextRef ctx);
+}
+
 class BrowserAction
 {
 	private:

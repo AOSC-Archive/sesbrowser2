@@ -76,12 +76,16 @@ void MainWindow::create_webview (GtkWidget* old)
 	
 	if (old == NULL)
 	{
-		this->webview = webkit_web_view_new_with_settings (t);
+		this->webview = webkit_web_view_new ();
+		webkit_web_context_set_process_model (webkit_web_view_get_context((WebKitWebView*) this->webview), WEBKIT_PROCESS_MODEL_SHARED_SECONDARY_PROCESS);
+		webkit_web_view_set_settings ((WebKitWebView*) this->webview,t);
 	}
 	else
 	{
 		this->webview = webkit_web_view_new_with_related_view ((WebKitWebView*) old);
 	}
+
+	SESdotJS js (webkit_web_view_get_javascript_global_context (WebKitWebView*) this->webview));
 
 }
 
