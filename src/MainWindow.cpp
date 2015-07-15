@@ -85,7 +85,9 @@ void MainWindow::create_webview (GtkWidget* old)
 		this->webview = webkit_web_view_new_with_related_view ((WebKitWebView*) old);
 	}
 
-	SESdotJS js (webkit_web_view_get_javascript_global_context (WebKitWebView*) this->webview));
+    webkit_web_view_set_custom_charset ((WebKitWebView*) this->webview, "UTF-8");
+    	
+	SESdotJS js (webkit_web_view_get_javascript_global_context ((WebKitWebView*) this->webview));
 
 }
 

@@ -1,14 +1,29 @@
 #include <webkit2/webkit2.h>
 
+#include <JavaScriptCore/JSBase.h> 
+#include <JavaScriptCore/JSContextRef.h> 
+#include <JavaScriptCore/JSStringRef.h> 
+#include <JavaScriptCore/JSObjectRef.h> 
+#include <JavaScriptCore/JSValueRef.h> 
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
 class SESdotJS
 {
+	private:
+	static JSClassRef SES_ClassCreate(JSContextRef ctx);
+	static void SES_Initialize(JSContextRef ctx, JSObjectRef object);
+	static void SES_Finalize(JSObjectRef object);
+	static JSValueRef SES_GetVerbose(JSContextRef ctx, JSObjectRef object, JSStringRef propertyName, JSValueRef *exception);
+	static JSValueRef SES_GetVersion(JSContextRef ctx, JSObjectRef object, JSStringRef propertyName, JSValueRef *exception);
+	static JSValueRef SES_Show(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject, size_t argumentCount, const JSValueRef arguments[], JSValueRef *exception);
+	static JSValueRef SES_Print(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject, size_t argumentCount, const JSValueRef arguments[], JSValueRef *exception);
+	
 	public:
 	SESdotJS (JSGlobalContextRef ctx);
-}
+};
 
 class BrowserAction
 {
@@ -25,8 +40,7 @@ class BrowserAction
 	static void signal_close (WebKitWebView* web_view, gpointer data);
 	static void win_signal_close (GtkWidget* win, gpointer data);
 	
-	
-static void num_dec ();
+	static void num_dec ();
 	
 	static void close (GtkWidget* w);
 	void init (WebKitWebView* view, gpointer b, gpointer w);
