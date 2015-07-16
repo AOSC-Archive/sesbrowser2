@@ -52,6 +52,16 @@ void BrowserAction::win_signal_close (GtkWidget* win, gpointer data)
 	close (NULL);
 }
 
+void BrowserAction::web_view_load_changed (WebKitWebView  *web_view, WebKitLoadEvent load_event, gpointer user_data)
+{
+    if (load_event == WEBKIT_LOAD_STARTED) {
+        /* New load, we have now a provisional URI */
+        const char* provisional_uri = webkit_web_view_get_uri (web_view);
+        /* Here we could start a spinner or update the
+         * location bar with the provisional URI */
+	}
+}
+
 void BrowserAction::signal_ready_to_show (WebKitWebView* web_view, gpointer data)
 {
 	printf ("	receive signal 'Ready to show'\n");
