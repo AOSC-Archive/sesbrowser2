@@ -1,5 +1,5 @@
 #include "sesbrowser.h"
-
+/*
 void SESdotJS::SES_Initialize(JSContextRef ctx, JSObjectRef object)
 {
 	printf ("	Initing SES.JS, \n");	
@@ -57,27 +57,27 @@ JSValueRef SESdotJS::SES_Print(JSContextRef ctx, JSObjectRef function, JSObjectR
 	
 	return JSValueMakeNumber(ctx, size);
 }
-
+*/
 JSClassRef SESdotJS::SES_ClassCreate(JSContextRef ctx)
 {
-	const JSStaticFunction SESStaticFunctions[] = {
-		{ "show", SES_Show, kJSPropertyAttributeNone | kJSPropertyAttributeDontDelete },
-		{ "print", SES_Print, kJSPropertyAttributeNone | kJSPropertyAttributeDontDelete },
-	{ 0, 0, 0 }};
+	//const JSStaticFunction SESStaticFunctions[] = {
+	//	{ "show", SES_Show, kJSPropertyAttributeNone | kJSPropertyAttributeDontDelete },
+	//	{ "print", SES_Print, kJSPropertyAttributeNone | kJSPropertyAttributeDontDelete },
+	//{ 0, 0, 0 }};
 
-	JSStaticValue StaticValues[] = {
-	{ "Version", SES_GetVersion, NULL, kJSPropertyAttributeDontDelete | kJSPropertyAttributeReadOnly },
-	{ "Verbose", SES_GetVerbose, NULL, kJSPropertyAttributeDontDelete | kJSPropertyAttributeReadOnly },
-	{ NULL, 0, 0, 0}};
+	//JSStaticValue StaticValues[] = {
+	//{ "Version", SES_GetVersion, NULL, kJSPropertyAttributeDontDelete | kJSPropertyAttributeReadOnly },
+	//{ "Verbose", SES_GetVerbose, NULL, kJSPropertyAttributeDontDelete | kJSPropertyAttributeReadOnly },
+	//{ NULL, 0, 0, 0}};
 
 	JSClassDefinition classdef;
 	classdef.version = 0;
 	classdef.attributes = kJSClassAttributeNone;
 	classdef.className = "SES";
-	classdef.staticValues = StaticValues;
-	classdef.staticFunctions = SESStaticFunctions;
-	classdef.initialize = SES_Initialize;
-	classdef.finalize = SES_Finalize;
+	classdef.staticValues = NULL;//StaticValues;
+	classdef.staticFunctions = NULL;//SESStaticFunctions;
+	classdef.initialize = NULL;//SES_Initialize;
+	classdef.finalize = NULL;//SES_Finalize;
 
 	return JSClassCreate(&classdef);
 }
@@ -85,8 +85,8 @@ JSClassRef SESdotJS::SES_ClassCreate(JSContextRef ctx)
 SESdotJS::SESdotJS (JSGlobalContextRef ctx)
 {
 	JSObjectRef globalObj = JSContextGetGlobalObject(ctx);
-	JSClassRef cls = this->SES_ClassCreate(ctx);
-	JSObjectRef jsObj = JSObjectMake(ctx, cls, NULL);
+	//JSClassRef cls = SES_ClassCreate(ctx);
+	//JSObjectRef jsObj = JSObjectMake(ctx, cls, NULL);
 	JSStringRef name = JSStringCreateWithUTF8CString("SES");
-	JSObjectSetProperty (ctx, globalObj, name, jsObj, kJSClassAttributeNone | kJSPropertyAttributeDontDelete, 0);
+	JSObjectSetProperty (ctx, globalObj, name, globalObj, kJSClassAttributeNone | kJSPropertyAttributeDontDelete, 0);
 }

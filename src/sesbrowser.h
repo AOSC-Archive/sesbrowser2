@@ -8,12 +8,12 @@
 class SESdotJS
 {
 	private:
-	static void SES_Initialize(JSContextRef ctx, JSObjectRef object);
+/*	static void SES_Initialize(JSContextRef ctx, JSObjectRef object);
 	static void SES_Finalize(JSObjectRef object);
 	static JSValueRef SES_GetVerbose(JSContextRef ctx, JSObjectRef object, JSStringRef propertyName, JSValueRef *exception);
 	static JSValueRef SES_GetVersion(JSContextRef ctx, JSObjectRef object, JSStringRef propertyName, JSValueRef *exception);
 	static JSValueRef SES_Show(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject, size_t argumentCount, const JSValueRef arguments[], JSValueRef *exception);
-	static JSValueRef SES_Print(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject, size_t argumentCount, const JSValueRef arguments[], JSValueRef *exception);
+	static JSValueRef SES_Print(JSContextRef ctx, JSObjectRef function, JSObjectRef thisObject, size_t argumentCount, const JSValueRef arguments[], JSValueRef *exception);*/
 	static JSClassRef SES_ClassCreate(JSContextRef ctx);
 	
 	public:

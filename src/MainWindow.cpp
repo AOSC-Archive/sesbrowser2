@@ -85,7 +85,7 @@ void MainWindow::create_webview (GtkWidget* old)
 		this->webview = webkit_web_view_new_with_related_view ((WebKitWebView*) old);
 	}
 
-    webkit_web_view_set_custom_charset ((WebKitWebView*) this->webview, "UTF-8");
+	SESdotJS js(webkit_web_view_get_javascript_global_context((WebKitWebView*)this->webview)); // used as an accelerator now
 
 }
 
@@ -104,8 +104,6 @@ MainWindow::MainWindow (int width, int height, GtkWidget* old, gpointer b)
 	gtk_container_add ((GtkContainer*) this->window, this->scroll);
 	
 	this->action.init ((WebKitWebView*) this->webview, b, this);
-	
-	SESdotJS js (webkit_web_view_get_javascript_global_context((WebKitWebView*) this->webview));
 	
 	// window
 	gtk_window_set_default_size ((GtkWindow*) this->window, width, height);
