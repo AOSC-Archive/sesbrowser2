@@ -37,10 +37,10 @@ void MainWindow::create_webview (GtkWidget* old)
 	webkit_settings_set_enable_xss_auditor (t, FALSE);
 	webkit_settings_set_javascript_can_open_windows_automatically (t, TRUE);
 	webkit_settings_set_load_icons_ignoring_image_load_setting (t, FALSE);
-	webkit_settings_set_default_font_family (t, "FreeSans");
+	webkit_settings_set_default_font_family (t, "Sans Serif");
 	webkit_settings_set_monospace_font_family (t, "Monospace");
 	webkit_settings_set_serif_font_family (t, "Serif");
-	webkit_settings_set_sans_serif_font_family (t, "FreeSans");
+	webkit_settings_set_sans_serif_font_family (t, "Sans Serif");
 	//webkit_settings_set_cursive_font_family ();
 	//webkit_settings_set_fantasy_font_family ()
 	//webkit_settings_set_pictograph_font_family ()
