@@ -13,7 +13,7 @@ GtkWidget* SESBrowser::newWindow (char* uri, GtkWidget* old)
 SESBrowser::SESBrowser (char* uri, GtkWidget* old)
 {
 	printf ("Init web page: %s\n", uri);
-	window = new MainWindow[maxWindows];
+	window = (MainWindow *) operator new[](sizeof(MainWindow) * maxWindows);
 	available = new gboolean[maxWindows];
 	for (int i = 0; i < maxWindows; i++)
 	{
