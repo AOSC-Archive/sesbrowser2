@@ -63,8 +63,8 @@ class MainWindow
 class SESBrowser
 {
 	public:
-	MainWindow* 	window;
-	gboolean*		available;
+	MainWindow* 	window;    // FIXME: How do we free the slots?
+	gboolean*		available; 
 	
 	int whoIs (GtkWidget* win);
 	int getAvailable ();
@@ -72,4 +72,33 @@ class SESBrowser
 	GtkWidget* newWindow (char* uri, GtkWidget* old);
 	
 	SESBrowser (char* uri, GtkWidget* old);
+
+	private:
+	static const int maxWindows = 128; // we don't need it to be public, right?
 };
+
+// very trivial, inlinable functions -- moved from prog cpp.
+inline int SESBrowser::getAvailable ()
+{
+	for (int i=0; i < maxWindows; i++)
+	{
+		if (this->available[i] == TRUE)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+inline int SESBrowser::whoIs (GtkWidget* win)
+{
+	for (int i=0; i < maxWindows; i++)
+	{
+		if (this->window[i].window == win)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
